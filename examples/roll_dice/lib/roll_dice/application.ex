@@ -11,7 +11,7 @@ defmodule RollDice.Application do
     :opentelemetry_cowboy.setup()
     OpentelemetryPhoenix.setup(adapter: :cowboy2)
 
-    Counter.create(:number_of_messages, %{unit: "1", description: "some counter lusooo"})
+    Counter.create(:number_of_requests, %{unit: "1", description: "some counter lusooo"})
 
     children = [
       # Start the Telemetry supervisor

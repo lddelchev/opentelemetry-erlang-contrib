@@ -35,6 +35,22 @@ config :opentelemetry_exporter,
        otlp_protocol: :grpc,
        otlp_endpoint: "http://localhost:4317"
 
+config :opentelemetry_experimental, :readers,
+  [%{
+    module: :otel_metric_reader,
+    config: %{
+      exporter: {:otel_metric_exporter_pid, {:metric, self()}},
+      default_temporality_mapping: %{
+        counter: :temporality_delta,
+        observable_counter: :temporality_cumulative,
+        updown_counter: :temporality_delta,
+        observable_updowncounter: :temporality_cumulative,
+        histogram: :temporality_cumulative,
+        observable_gauge: :temporality_cumulative
+      }
+    }
+  }]
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{config_env()}.exs"
