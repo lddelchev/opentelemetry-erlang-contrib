@@ -47,7 +47,7 @@ defmodule RollDice.MixProject do
       {:opentelemetry, "~> 1.5"},
       {:opentelemetry_api, "~> 1.4"},
       {:opentelemetry_api_experimental, "~> 0.5.1"},
-      {:opentelemetry_experimental, "~> 0.5.1"},
+      {:opentelemetry_experimental, git: "https://github.com/open-telemetry/opentelemetry-erlang.git", sparse: "apps/opentelemetry_experimental", branch: "main"},
       {:opentelemetry_phoenix, "~> 1.2"},
       {:opentelemetry_cowboy, "~> 0.3"}
     ]
